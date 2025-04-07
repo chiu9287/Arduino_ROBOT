@@ -83,13 +83,8 @@ void pid() {
 
   // 限制PID輸出的範圍
   angle = constrain(angle, -255, 255);
-
- if (error == 0) {
-    advance_forward(motorSpeed, motorSpeed, motorSpeed, motorSpeed); // 保持直行
-  } else {
-    advance_forward(motorSpeed + angle, motorSpeed - angle, motorSpeed + angle, motorSpeed - angle); // 調整輪速(左+右-)
-  }
-    last_error = error; // 更新上一次誤差
+  advance_forward(motorSpeed + angle, motorSpeed - angle, motorSpeed + angle, motorSpeed - angle); // 調整輪速(左+右-)
+  last_error = error; // 更新上一次誤差
 }
 
 void advance_forward(int speedA, int speedB, int speedC, int speedD) {
