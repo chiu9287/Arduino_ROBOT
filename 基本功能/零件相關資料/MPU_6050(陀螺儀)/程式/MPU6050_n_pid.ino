@@ -27,7 +27,7 @@ const int IN7 = A3; // 馬達4轉向控制
 const int IN8 = A4; // 馬達4轉向控制
 const int ENB2 = A5; // 馬達4速度控制
 
-int motorspeed = 200; // 馬達基礎速度
+int motorSpeed = 200; // 馬達基礎速度
 
 float Kp = 70; // 比例增益 70
 float Ki = 15; // 積分增益 15
@@ -75,7 +75,7 @@ void loop() {
   }
 }
 void pid() {
-  error = target - yaw; // 獲取yaw角度的誤差
+  error = target - mpu.getAngleZ(); // 獲取yaw角度的誤差
   integral += error; // 積分
   // integral = constrain(integral, -100, 100); // 限制積分範圍，避免積分飽和
   derivative = error - last_error; // 微分
